@@ -1,5 +1,6 @@
 import Foundation
 import Firebase
+import SwiftUI
 import FirebaseFirestoreSwift
 
 struct RecentMessage: Codable, Identifiable {
@@ -31,6 +32,7 @@ class UserSelectionViewModel: ObservableObject {
     @Published var users: [ChatUser] = []
     @Published var chatUser: ChatUser?
     @Published var recentMessages: [RecentMessage] = []
+    @State var shouldNavigateToChat: Bool = false
     
     private var fireStoreListner: ListenerRegistration?
 
@@ -41,6 +43,13 @@ class UserSelectionViewModel: ObservableObject {
         fetchCurrentUser()
         fetchAllUsers()
         fetchRecentMessages()
+        if FirebaseManager.shared.auth.currentUser?.uid != FirebaseConstant.rmManagerUID {
+            handleNavigateToChat()
+        }
+    }
+    
+    func handleNavigateToChat() {
+        shouldNavigateToChat.toggle()
     }
     
     func handleSignOut() {

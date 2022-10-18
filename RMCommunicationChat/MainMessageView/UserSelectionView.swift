@@ -24,38 +24,38 @@ struct UserSelectionView: View {
     }
     
     private var customNavBar: some View {
-        HStack(spacing: 16) {
-            WebImage(url: URL(string: vm.chatUser?.profileImageUrl ?? ""))
-                .resizable()
-                .scaledToFill()
-                .frame(width: 64, height: 64)
-                .clipped()
-                .cornerRadius(.infinity)
-                .shadow(color: .gray, radius: 4, x: 0.0, y: 2)
+        HStack {
+//            WebImage(url: URL(string: vm.chatUser?.profileImageUrl ?? ""))
+//                .resizable()
+//                .scaledToFill()
+//                .frame(width: 64, height: 64)
+//                .clipped()
+//                .cornerRadius(.infinity)
+//                .shadow(color: .gray, radius: 4, x: 0.0, y: 2)
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(vm.chatUser?.name ?? "")
-                    .font(.system(size: 24, weight: .bold))
-                HStack {
-                    Circle()
-                        .foregroundColor(.green)
-                        .frame(width: 14, height: 14)
-                    Text("Online")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(.lightGray))
-                }
-            }
+//            VStack(alignment: .leading, spacing: 4) {
+//                Text(vm.chatUser?.name ?? "")
+//                    .font(.system(size: 24, weight: .bold))
+//                HStack {
+//                    Circle()
+//                        .foregroundColor(.green)
+//                        .frame(width: 14, height: 14)
+//                    Text("Online")
+//                        .font(.system(size: 12))
+//                        .foregroundColor(Color(.lightGray))
+//                }
+//            }
             Spacer()
             
             Button {
                 shouldShowLogOutOptions.toggle()
             } label: {
                 Image(systemName: "gear")
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(Color(.label))
+                    .font(.system(size: 25, weight: .bold))
+                    .foregroundColor(Color(.white))
             }
         }
-        .padding()
+//        .padding()
         .actionSheet(isPresented: $shouldShowLogOutOptions) {
             .init(title: Text("Settings"), message: Text("What do you want to do?"), buttons: [
                 .destructive(Text("Sign Out"), action: {
@@ -68,6 +68,10 @@ struct UserSelectionView: View {
                 vm.fetchCurrentUser()
                 vm.fetchAllUsers()
                 vm.fetchRecentMessages()
+                if FirebaseManager.shared.auth.currentUser?.uid != FirebaseConstant.rmManagerUID {
+                    selectedChatUser = ChatUser(data: [FirebaseConstant.uid: FirebaseConstant.rmManagerUID, FirebaseConstant.profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/client-rm-chat.appspot.com/o/itzIT5LQomdKNrBGgGAlw1fNsys1?alt=media&token=da60f405-a0b0-4457-a1a0-63bd9cd57afe", FirebaseConstant.email: "mob5test5@cnb.com"])
+                    shouldNavigateToChatView.toggle()
+                }
             })
         }
     }

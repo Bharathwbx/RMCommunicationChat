@@ -10,6 +10,8 @@ struct FirebaseConstant {
     static let profileImageURL = "profileImageURL"
     static let email = "email"
     static let uid = "uid"
+    static let rmPOCManager = "Mob5test5"
+    static let rmManagerUID = "itzIT5LQomdKNrBGgGAlw1fNsys1"
 }
 
 struct ChatMessage: Codable, Identifiable {
@@ -101,6 +103,10 @@ class ChatViewModel: ObservableObject {
         }
     }
     
+    func openMaps() {
+        UIApplication.shared.open(NSURL(string: "https://maps.apple.com/?address=777,Flower,St,,Los,Angeles")! as URL)
+    }
+    
     private func persistRecentMessage() {
         guard let chatUser = chatUser else { return }
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
@@ -126,6 +132,10 @@ class ChatViewModel: ObservableObject {
                 return
             }
         }
+    }
+    
+    func handleSignOut() {
+        try? FirebaseManager.shared.auth.signOut()
     }
     
     @Published var count = 0
