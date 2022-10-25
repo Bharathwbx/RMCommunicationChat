@@ -51,8 +51,8 @@ struct UserSelectionView: View {
                 shouldShowLogOutOptions.toggle()
             } label: {
                 Image(systemName: "gear")
-                    .font(.system(size: 25, weight: .bold))
-                    .foregroundColor(Color(.white))
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundColor(Color(.label))
             }
         }
 //        .padding()
@@ -69,7 +69,7 @@ struct UserSelectionView: View {
                 vm.fetchAllUsers()
                 vm.fetchRecentMessages()
                 if FirebaseManager.shared.auth.currentUser?.uid != FirebaseConstant.rmManagerUID {
-                    selectedChatUser = ChatUser(data: [FirebaseConstant.uid: FirebaseConstant.rmManagerUID, FirebaseConstant.profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/client-rm-chat.appspot.com/o/itzIT5LQomdKNrBGgGAlw1fNsys1?alt=media&token=da60f405-a0b0-4457-a1a0-63bd9cd57afe", FirebaseConstant.email: "mob5test5@cnb.com"])
+                    selectedChatUser = ChatUser(data: [FirebaseConstant.uid: FirebaseConstant.rmManagerUID, FirebaseConstant.profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/client-rm-chat.appspot.com/o/itzIT5LQomdKNrBGgGAlw1fNsys1?alt=media&token=da60f405-a0b0-4457-a1a0-63bd9cd57afe", FirebaseConstant.email: "mob5test5@gmail.com"])
                     shouldNavigateToChatView.toggle()
                 }
             })

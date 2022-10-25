@@ -40,8 +40,7 @@ struct ChatView: View {
                 } label: {
                     Text("777 Flower St, Los Angeles")
                 }
-                Text("818-766-5124")
-                    .foregroundColor(.blue)
+                Text("Phone: [818-766-5124](tel:818-766-5124)")
                 
                 Button {
                     shouldShowLogOutOptions.toggle()
@@ -147,6 +146,6 @@ struct MessageView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(vm: ChatViewModel(chatUser: .init(data: ["uid":"nQGOjonOWLazHE6tWQJGyyHahzE3", "email": "testuser11@cnb.com"])))
+        ChatView(vm: ChatViewModel(chatUser: .init(data: ["uid":"nQGOjonOWLazHE6tWQJGyyHahzE3", "email": "testuser11@gmail.com"])))
     }
 }

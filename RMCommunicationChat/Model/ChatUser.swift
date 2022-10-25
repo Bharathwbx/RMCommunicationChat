@@ -9,7 +9,7 @@ struct ChatUser: Identifiable {
     }
     
     var name: String {
-        email.replacingOccurrences(of: "@cnb.com", with: "").capitalized
+        email.replacingOccurrences(of: "@gmail.com", with: "").capitalized
     }
 }
 
