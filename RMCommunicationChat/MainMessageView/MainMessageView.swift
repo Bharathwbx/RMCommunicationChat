@@ -133,7 +133,7 @@ struct MainMessageView: View {
 //                .shadow(radius: 5)
 //
 //            VStack(alignment: .leading, spacing: 4) {
-//                let email = vm.chatUser?.email.replacingOccurrences(of: "@cnb.com", with: "") ?? ""
+//                let email = vm.chatUser?.email.replacingOccurrences(of: "@gmail.com", with: "") ?? ""
 //                Text(email)
 //                    .font(.system(size: 24, weight: .bold))
 //                HStack {

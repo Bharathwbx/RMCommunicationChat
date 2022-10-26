@@ -242,7 +242,7 @@ struct ChatLogView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
 //            ChatLogView(chatUser: .init(data: ["uid":"nQGOjonOWLazHE6tWQJGyyHahzE3", "email": "testuser11@gmail.com"]))
-            ChatLogView(vm: ChatLogViewModel(chatUser: .init(data: ["uid":"nQGOjonOWLazHE6tWQJGyyHahzE3", "email": "testuser11@cnb.com"])))
+            ChatLogView(vm: ChatLogViewModel(chatUser: .init(data: ["uid":"nQGOjonOWLazHE6tWQJGyyHahzE3", "email": "testuser11@gmail.com"])))
         }
     }
 }
